@@ -1,0 +1,42 @@
+export const adddatagu45 = [
+    {
+        wagonNumber: 1165151,
+        wagonCode: "UZ123456",
+        containerTypeAndNumber: "20FT - CNT987654",
+        client: "Logistic Pro LLC",
+        cargoName: "Medical supplies",
+        arrivalDate: "2025-08-01",
+        completionDate: "2025-08-03",
+        removalDate: "2025-08-04",
+        note: "Temperature control required",
+        bigBody: false,
+        railwayTransfer: false,
+        specificPeriods: false,
+        seal: 5,
+        cleaning: false,
+        washing: false,
+        stencil: false,
+        telegraphNotification: false,
+        specialConditions: false
+    },
+    {
+        wagonNumber: 26516556,
+        wagonCode: "UZ654321",
+        containerTypeAndNumber: "40FT - CNT123987",
+        client: "TransContainer JSC",
+        cargoName: "Construction materials",
+        arrivalDate: "2025-08-02",
+        completionDate: "2025-08-05",
+        removalDate: "2025-08-06",
+        note: "No special conditions",
+        bigBody: false,
+        railwayTransfer: false,
+        specificPeriods: false,
+        seal: 5,
+        cleaning: false,
+        washing: false,
+        stencil: false,
+        telegraphNotification: false,
+        specialConditions: false
+    }
+]
