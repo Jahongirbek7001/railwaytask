@@ -1,4 +1,4 @@
-export const options = [
+export let options = [
     {
         id: 1,
         numbergu45: 12345,

@@ -1,4 +1,4 @@
-export const adddatagu45 = [
+export let adddatagu45 = [
     {
         wagonNumber: 1165151,
         wagonCode: "UZ123456",
