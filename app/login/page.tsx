@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 import Cookies from "js-cookie";
+import Link from "next/link";
 
 export default function LoginPage() {
     const router = useRouter();
@@ -56,6 +57,7 @@ export default function LoginPage() {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                 />
+                <p>You don'y have an account ? <Link href={'/signup'} className=" text-blue-500">Sign Up</Link></p>
                 <button
                     type="submit"
                     className="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700 cursor-pointer"
