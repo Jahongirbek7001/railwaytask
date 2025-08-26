@@ -27,8 +27,7 @@ export default function LoginPage() {
         }
 
         if (data?.session?.access_token) {
-            Cookies.set("access_token", data.session.access_token, { expires: 1 });
-            Cookies.set("refresh_token", data.session.refresh_token, { expires: 7 });
+            Cookies.set("sb_token", data.session.access_token, { expires: 1 });
             router.push("/dashboard/list-gu45");
         } else {
             setError("Sessiya yaratilmagan.");
