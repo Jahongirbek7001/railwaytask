@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 import Cookies from "js-cookie";
@@ -12,25 +12,54 @@ export default function LoginPage() {
     const [password, setPassword] = useState("");
     const [error, setError] = useState<string | null>(null);
 
+    // const handleLogin = async (e: React.FormEvent) => {
+    //     e.preventDefault();
+    //     setError(null);
+
+    //     const { data, error } = await supabase.auth.signInWithPassword({
+    //         email,
+    //         password,
+    //     });
+
+    //     if (error) {
+    //         setError(error.message);
+    //         return;
+    //     }
+
+    //     if (data?.session?.access_token) {
+    //         Cookies.set("access_token", data.session.access_token, { expires: 1 });
+    //         Cookies.set("refresh_token", data.session.refresh_token, { expires: 7 });
+    //         router.push("/dashboard/list-gu45");
+    //     } else {
+    //         setError("Sessiya yaratilmagan.");
+    //     }
+    // };
+
+    useEffect(() => {
+        const { data: listener } = supabase.auth.onAuthStateChange(
+            (event, session) => {
+                if (session) {
+                    router.push("/dashboard/list-gu45"); // sessiya bo‘lsa redirect
+                }
+            }
+        );
+
+        return () => {
+            listener.subscription.unsubscribe();
+        };
+    }, [router]);
+
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
         setError(null);
 
-        const { data, error } = await supabase.auth.signInWithPassword({
+        const { error } = await supabase.auth.signInWithPassword({
             email,
             password,
         });
 
         if (error) {
             setError(error.message);
-            return;
-        }
-
-        if (data?.session?.access_token) {
-            Cookies.set("access_token", data.session.access_token, { expires: 1 });
-            router.push("/dashboard/list-gu45");
-        } else {
-            setError("Sessiya yaratilmagan.");
         }
     };
 
